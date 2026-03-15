@@ -12,6 +12,11 @@ Graduation project on improving Large Language Model performance for Arabic synt
 | **[experiments/](experiments/)** | Experiment configs, run logs, and reproducibility notes. |
 | **[results/](results/)** | Outputs, metrics, tables, and figures. |
 | **[scripts/](scripts/)** | Utility scripts (download data, preprocess, run evaluation). |
+| **[ui/](ui/)** | Web or desktop UI for running and visualizing the analysis. |
+
+## Large files
+
+Datasets and model weights are not stored in this repo (GitHub’s 100 MB file limit). Use [data/README.md](data/README.md) for options: external hosting + download script, **Git LFS**, or **DVC**.
 
 ## Setup
 
