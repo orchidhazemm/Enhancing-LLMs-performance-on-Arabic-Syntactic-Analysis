@@ -1,34 +1,78 @@
 # Enhancing LLMs Performance on Arabic Syntactic Analysis
 
-Graduation project on improving Large Language Model performance for Arabic syntactic analysis (parsing, dependency parsing, POS tagging, etc.).
+**Making large language models better at understanding and generating Arabic.**
 
-## Project structure
+A graduation project that improves Arabic NLP by training custom tokenizers, fine-tuning with LoRA, and building an end-to-end pipeline from data to a live inference API.
 
-| Folder | Description |
-|--------|-------------|
-| **[data/](data/)** | Datasets for Arabic syntactic analysis (raw and preprocessed). |
-| **[notebooks/](notebooks/)** | Jupyter notebooks for experiments, analysis, and visualizations. |
-| **[src/](src/)** | Source code: preprocessing, model interfaces, evaluation pipelines. |
-| **[experiments/](experiments/)** | Experiment configs, run logs, and reproducibility notes. |
-| **[results/](results/)** | Outputs, metrics, tables, and figures. |
-| **[scripts/](scripts/)** | Utility scripts (download data, preprocess, run evaluation). |
-| **[ui/](ui/)** | Web or desktop UI for running and visualizing the analysis. |
+---
 
-## Large files
+## What This Project Does
 
-Datasets and model weights are not stored in this repo (GitHub’s 100 MB file limit). Use [data/README.md](data/README.md) for options: external hosting + download script, **Git LFS**, or **DVC**.
+- **Custom Arabic tokenizers** — Train and merge tokenizers tailored to Arabic script and morphology for more efficient and accurate tokenization.
+- **Fine-tuning & evaluation** — Fine-tune base LLMs on Arabic instruction data and evaluate syntactic and generative quality.
+- **Adaptive LoRA training** — Use parameter-efficient LoRA (and variants) to adapt models to Arabic without full fine-tuning.
+- **Live inference API** — Serve the fine-tuned model via FastAPI (e.g. from notebooks) with a simple `/generate` endpoint for demos and the UI.
+
+---
+
+## Project Structure
+
+| Folder | What's inside |
+|--------|----------------|
+| **[data/](data/)** | Dataset descriptions and **download links** (files are on Google Drive). |
+| **[notebooks/](notebooks/)** | Jupyter notebooks: custom tokenizer training, merging, fine-tuning, evaluation, and the FastAPI app. |
+| **[src/](src/)** | Reusable source code (preprocessing, evaluation, utilities). |
+| **[experiments/](experiments/)** | Configs and notes for reproducible runs. |
+| **[results/](results/)** | Metrics, tables, and figures. |
+| **[scripts/](scripts/)** | Download and run scripts. |
+| **[ui/](ui/)** | Web UI and assets for the demo. |
+
+---
+
+## Datasets
+
+We use Arabic instruction and text corpora hosted on Google Drive (not in the repo due to size). **Download them from the links in [data/README.md](data/README.md)** and place the files in the `data/` folder.
+
+| Dataset | Use |
+|--------|-----|
+| **Alpaca Arabic (cleaned)** | Instruction tuning |
+| **Beetlware** | Arabic text corpus |
+| **Gemma2 Arabic instruct (cleaned)** | Instruction data for Gemma2-style models |
+| **ShareGPT Arabic instruction** | Instruction / conversation data |
+
+All links and filenames are listed in [data/README.md](data/README.md).
+
+---
 
 ## Setup
 
-Install dependencies (adjust to your environment):
-
 ```bash
-pip install -r requirements.txt
+git clone https://github.com/orchidhazemm/Enhancing-LLMs-performance-on-Arabic-Syntactic-Analysis.git
+cd Enhancing-LLMs-performance-on-Arabic-Syntactic-Analysis
+pip install -r requirements.txt   # if present; otherwise install deps from notebooks
 ```
+
+1. Download the datasets from [data/README.md](data/README.md) into `data/`.
+2. Run the notebooks in order (tokenizer training → merging → fine-tuning & evaluation → API app as needed).
+
+---
 
 ## Usage
 
-See `notebooks/` for step-by-step experiments and `scripts/` for batch runs.
+- **Notebooks:** Open `notebooks/` in Jupyter (or Colab). Start with tokenizer training, then fine-tuning & evaluation, then the app notebook for the API.
+- **API:** The notebook runs a FastAPI server and (optionally) exposes it via ngrok for a public `/generate` endpoint.
+- **UI:** Use the [ui/](ui/) folder for the web interface that talks to the API.
+
+---
+
+## Tech Stack
+
+- **Models & training:** Transformers, PEFT (LoRA), Accelerate  
+- **Serving:** FastAPI, Uvicorn  
+- **Notebooks:** Jupyter (Colab-friendly)  
+- **Data:** Arabic instruction datasets (Alpaca, ShareGPT, Gemma2-style, Beetlware)
+
+---
 
 ## License
 
