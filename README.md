@@ -4,6 +4,10 @@
 
 A graduation project that improves Arabic NLP by training custom tokenizers, fine-tuning with LoRA, and building an end-to-end pipeline from data to a live inference API.
 
+## Demo
+
+**[Watch the demo video](https://drive.google.com/file/d/1F9lIXivl3uhYdingkMCE_aZ5-VnAAx--/view?usp=share_link)** *(Google Drive)*
+
 ---
 
 ## What This Project Does
